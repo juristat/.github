@@ -1,2 +1,5 @@
-# .github
-Default repository for Juristat
+# Juristat
+
+## About
+
+Moneyball for Lawyers™
