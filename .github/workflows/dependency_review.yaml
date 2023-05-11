@@ -1,20 +1,20 @@
-## Describe your changes
+name: 'Dependency Review'
+on: [pull_request]
 
-<!-- If your branch name does not include your ticket number, please add it here -->
+permissions:
+  contents: read
+  pull-requests: write
 
-## Checklist before requesting a review
-
-- [ ] I have performed a self-review of my code
-- [ ] If it is a core feature, I have added thorough tests.
-- [ ] Do we need to implement analytics?
-- [ ] Will this be part of a product update? If yes, please write one phrase about this update in the first section.
-
-## Reviewer Checks
-
-<!-- If you are opening this PR, please ask yourself these questions and leave the section for reviewers -->
-
-- Does this PR introduce any new security issues?
-- Does this PR provide sufficient documentation?
-- Will these changes be understandable in six months? One year?
-- Does this PR resolve the ticket (or are there companion PRs that resolve it together)?
-- Does this PR provide adequate tests?
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v3
+        with:
+          config-file: './.github/dependency-review-config.yaml'
+          fail-on-severity: high
+          comment-summary-in-pr: true
+          deny-licenses: AGPL-1.0-or-later, AGPL-3.0-or-later
