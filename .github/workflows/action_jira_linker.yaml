@@ -9,7 +9,7 @@ jobs:
         continue-on-error: true
         uses: exogee-technology/action-jira-linker@v1.0.0
         with:
-          github-token: ${{ secrets.GIT_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           jira-user: ${{ secrets.JIRA_USER }}
           jira-token: ${{ secrets.JIRA_TOKEN }}
           jira-base-url: https://juristatv2.atlassian.net/
